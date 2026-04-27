@@ -512,7 +512,7 @@ void Screen::handleSetOn(bool on, FrameCallback einkScreensaver)
         if (on) {
             LOG_INFO("Turn on screen");
             powerMon->setState(meshtastic_PowerMon_State_Screen_On);
-#if defined(T_WATCH_S3) || defined(T_WATCH_ULTRA)
+#if !defined(ARCH_PORTDUINO) && (defined(T_WATCH_S3) || defined(T_WATCH_ULTRA))
             PMU->enablePowerOutput(XPOWERS_ALDO2);
 #endif
 
@@ -627,7 +627,7 @@ void Screen::handleSetOn(bool on, FrameCallback einkScreensaver)
 #endif
 #endif
 
-#if defined(T_WATCH_S3) || defined(T_WATCH_ULTRA)
+#if !defined(ARCH_PORTDUINO) && (defined(T_WATCH_S3) || defined(T_WATCH_ULTRA))
             PMU->disablePowerOutput(XPOWERS_ALDO2);
 #endif
             enabled = false;

@@ -151,7 +151,7 @@ int32_t TouchScreenBase::runOnce()
 
 void TouchScreenBase::hapticFeedback()
 {
-#if defined(T_WATCH_S3) || defined(T_WATCH_ULTRA)
+#if !defined(ARCH_PORTDUINO) && (defined(T_WATCH_S3) || defined(T_WATCH_ULTRA))
     drv.setWaveform(0, 75);
     drv.setWaveform(1, 0); // end waveform
     drv.go();
